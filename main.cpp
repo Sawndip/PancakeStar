@@ -53,7 +53,7 @@ boost::container::vector<state> close_list;
 
 set<vector<int>> goal_set;
 
-int count_close_states;
+int generated_nodes;
 int expanded_nodes;
 vector<int> goal_list;
 state *solution;
@@ -123,11 +123,11 @@ void getSuccessors(state* _current, double w){
 	
 	for(size_t i = 2; i < _current->list.size(); ++i) {
 		node_id++;
-		expanded_nodes++;       
+		generated_nodes++;       
 		state* succ = new state(node_id,flip(_current->list,i),0,0,0);
 		succ->g = _current->g +1;              
 		succ->h = hgap(succ->list)*w;
-		succ->f = succ->g+succ->h;
+		succ->f = succ->h+succ->g; 
 		//check if is open 
 		
 		auto node_find = node_map.find(node_id);
@@ -140,10 +140,10 @@ void getSuccessors(state* _current, double w){
 	}
 
 } 
-vector<int> createProblem (int n){
+vector<int> createProblem (int n, int seed){
 
 	vector<int> v0;
-	unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+	//unsigned seed = chrono::system_clock::now().time_since_epoch().count();
 
     default_random_engine e(seed);
    	//populate goal and create vector
@@ -166,68 +166,107 @@ vector<int> createProblem (int n){
 
 
 
+
+
 int aStar(vector<int> s0, double w) {
 
 	state *initial_state = new state(node_id,s0,0,0,0);
-	//open_list.clear();
-	//close_list.clear();
 
-	
 	auto prt_open = open_list.push(initial_state);
 	node_map.emplace(node_id,prt_open);
-
+	
 	
 	while(!open_list.empty()){
 		
 		//count_close_states++;
 		state* current = open_list.top();
-		open_list.pop();  
-		cout<<"Current state:"<<endl;
-		printList(current);
+		open_list.pop();
+		expanded_nodes++;  
+		//cout<<"Current state:"<<endl;
+		//printList(current);
 		//IF ARRAY IS DONE
 		if(checkForGoal(current->list)){
 			solution = current ; 
 			return 1;
 		}
 		getSuccessors(current,w);
+		
 	}
 	return -1;
 
 }
 
+update_h 
+
+//TODO:
 //revisar si la heuristica convergio
 //se actualiza (ver paper) la open
 //y de ahi se genera
-
+//add loop to be anytime )where is the break_ save all h values in a hash ma
 
 
 int main(int argc, char const *argv[])
 {
-	srand(time(NULL));
-
-
-	vector<int> myvector = createProblem(atoi(argv[1]));
-	
-
-	goal_set.insert(goal_list);
-	chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::now();
+	int n_cases = atoi(argv[1]);
+	int j =0 ;
+	vector<double> average_time;
+	vector<int> average_sol;
+	vector<int> average_exp_n;
+	vector<int> average_gen_n;
 	double w = 1;
-	//add loop to be anytime )where is the break_ save all h values in a hash ma
-	int resp = aStar(myvector,1.0);
-	chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::now();
-	if (resp != -1){
+	while(j < n_cases){
+		srand (4*(j+1));
+		vector<int> myvector = createProblem(atoi(argv[2]),rand()%100);
+		goal_set.insert(goal_list);
+		chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::now();
 
-		chrono::duration<double> time_span = chrono::duration_cast<chrono::duration<double>>(end-start);
-		cout<< "Problem solved: ";
-		for (int& x: myvector) cout << ' ' << x;
-    	cout << '\n';
-		cout<<"Duration: "<<time_span.count()<<endl;
-		cout<<"Solution: "<<solution->g <<endl;
-		cout<<"Nodes expanded:"<<expanded_nodes<<endl;
+		int resp = aStar(myvector,1.0);
 
-	} else {
-		cout<<"No solution find for the problem, NO pancakes for you!"<<endl;
+		chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::now();
+		if (resp != -1){
+
+			chrono::duration<double> time_span = chrono::duration_cast<chrono::duration<double>>(end-start);
+			cout<< "Problem solved: ";
+			for (int& x: myvector) cout << ' ' << x;
+    		cout << '\n';
+			cout<<"Duration: "<<time_span.count()<<endl;
+			cout<<"Solution: "<<solution->g <<endl;
+			cout<<"Nodes generated: "<<generated_nodes<<endl;
+			cout<<"Nodes expanded:"<<expanded_nodes<<endl;
+
+			average_time.push_back(time_span.count());
+			average_sol.push_back(solution->g);
+			average_exp_n.push_back(expanded_nodes);
+			average_gen_n.push_back(generated_nodes);
+		} else {
+			cout<<"No solution find for the problem, NO pancakes for you!"<<endl;
+		}
+
+		goal_set.clear();
+		open_list.clear();
+		close_list.clear();
+		goal_list.clear();
+		node_map.clear();
+		expanded_nodes = 0;
+		generated_nodes = 0;
+		node_id=0;
+		j++;
 	}
+	double avg_t;
+	int avg_sol;
+	int avg_exp;
+	int avg_gen;
+	for(unsigned i = 0; i < average_time.size(); ++i) {
+		avg_t+=average_time[i];
+		avg_sol+=average_sol[i];
+		avg_gen+=average_gen_n[i];
+		avg_exp+=average_exp_n[i];
+	}
+	cout<<"Average Time: "<<avg_t/average_time.size()<<endl;
+	cout<<"Average Solution: "<<avg_sol/average_sol.size()<<endl;
+	cout<<"Average Expanded Nodes: "<<avg_exp/average_exp_n.size()<<endl;
+	cout<<"Average Generated Nodes: "<<avg_gen/average_gen_n.size()<<endl;
+
 
 	return 0;
 }

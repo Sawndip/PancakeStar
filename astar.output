@@ -1,0 +1,504 @@
+Problem solved:  17 16 10 19 13 20 18 8 9 3 22 7 24 11 5 21 15 4 2 12 14 1 6 23 25
+Duration: 0.590508
+Solution: 23
+Nodes generated: 256611
+Nodes expanded:11158
+Problem solved:  24 5 23 16 7 10 19 9 13 21 20 1 18 6 4 14 15 3 8 12 2 22 11 17 25
+Duration: 0.989246
+Solution: 23
+Nodes generated: 234899
+Nodes expanded:10214
+Problem solved:  18 17 6 12 21 16 9 10 3 19 22 7 24 8 23 20 1 15 5 14 11 2 4 13 25
+Duration: 0.081193
+Solution: 23
+Nodes generated: 43079
+Nodes expanded:1874
+Problem solved:  5 3 20 16 19 23 11 13 24 4 18 1 21 8 22 9 15 12 14 17 2 6 10 7 25
+Duration: 0.046235
+Solution: 24
+Nodes generated: 23391
+Nodes expanded:1018
+Problem solved:  6 5 17 22 12 16 14 21 11 4 7 13 1 2 9 3 18 23 10 19 24 8 15 20 25
+Duration: 0.568903
+Solution: 23
+Nodes generated: 273907
+Nodes expanded:11910
+Problem solved:  10 21 15 17 18 6 5 23 24 12 19 11 20 8 22 3 4 1 2 9 7 13 16 14 25
+Duration: 2.11284
+Solution: 21
+Nodes generated: 1072214
+Nodes expanded:46619
+Problem solved:  11 9 15 22 6 1 13 3 8 16 7 18 2 19 12 14 10 21 4 23 24 17 5 20 25
+Duration: 0.029051
+Solution: 23
+Nodes generated: 15134
+Nodes expanded:659
+Problem solved:  10 13 18 1 21 17 22 9 19 14 23 8 4 12 6 5 3 24 7 15 20 16 2 11 25
+Duration: 0.252426
+Solution: 24
+Nodes generated: 130502
+Nodes expanded:5675
+Problem solved:  23 5 12 10 15 24 9 8 18 20 1 19 7 6 11 4 13 22 14 21 3 16 2 17 25
+Duration: 0.331482
+Solution: 23
+Nodes generated: 166520
+Nodes expanded:7241
+Problem solved:  2 6 5 1 15 17 22 4 12 13 16 3 23 9 21 18 11 24 7 19 20 8 14 10 25
+Duration: 0.132887
+Solution: 22
+Nodes generated: 68103
+Nodes expanded:2962
+Problem solved:  5 21 9 23 13 8 18 17 11 22 2 10 14 24 4 1 16 15 3 6 20 19 12 7 25
+Duration: 0.148949
+Solution: 22
+Nodes generated: 76245
+Nodes expanded:3316
+Problem solved:  14 24 3 7 8 4 20 17 12 16 2 5 19 18 10 13 23 6 11 15 22 1 21 9 25
+Duration: 0.186454
+Solution: 23
+Nodes generated: 94530
+Nodes expanded:4111
+Problem solved:  13 18 7 8 6 23 15 3 17 22 9 21 11 24 1 19 10 14 5 16 20 2 4 12 25
+Duration: 0.018356
+Solution: 23
+Nodes generated: 9913
+Nodes expanded:432
+Problem solved:  9 11 24 14 13 21 15 18 17 7 10 5 2 16 4 6 20 12 23 3 22 1 19 8 25
+Duration: 0.390845
+Solution: 23
+Nodes generated: 205252
+Nodes expanded:8925
+Problem solved:  5 22 12 20 11 9 3 7 23 17 16 1 13 19 21 2 4 18 6 14 10 8 24 15 25
+Duration: 0.2659
+Solution: 24
+Nodes generated: 136781
+Nodes expanded:5948
+Problem solved:  8 10 6 13 14 18 3 12 21 5 24 7 22 1 2 4 19 11 9 15 20 23 16 17 25
+Duration: 0.130978
+Solution: 22
+Nodes generated: 68356
+Nodes expanded:2973
+Problem solved:  19 22 5 21 10 2 14 13 15 9 23 18 11 20 16 3 6 8 12 7 4 1 24 17 25
+Duration: 0.805597
+Solution: 24
+Nodes generated: 410504
+Nodes expanded:17849
+Problem solved:  20 23 13 18 22 7 14 12 3 11 15 21 17 8 19 5 4 1 24 6 16 2 10 9 25
+Duration: 0.084159
+Solution: 23
+Nodes generated: 45655
+Nodes expanded:1986
+Problem solved:  12 1 4 2 10 21 24 14 5 18 15 11 17 16 23 22 3 19 7 8 20 6 9 13 25
+Duration: 0.743332
+Solution: 22
+Nodes generated: 387320
+Nodes expanded:16841
+Problem solved:  21 19 4 23 22 8 12 1 9 14 20 10 17 3 13 18 5 16 11 24 2 6 7 15 25
+Duration: 0.00787
+Solution: 22
+Nodes generated: 4278
+Nodes expanded:187
+Problem solved:  2 16 11 1 19 5 6 24 4 10 7 15 3 17 14 22 23 8 18 12 13 21 20 9 25
+Duration: 1.72875
+Solution: 22
+Nodes generated: 869906
+Nodes expanded:37823
+Problem solved:  5 4 21 24 9 11 12 23 3 13 14 6 15 18 17 7 16 2 22 8 20 19 10 1 25
+Duration: 0.001599
+Solution: 19
+Nodes generated: 851
+Nodes expanded:38
+Problem solved:  16 7 19 9 4 5 11 22 20 10 6 12 14 15 2 24 13 8 21 23 18 3 1 17 25
+Duration: 0.254869
+Solution: 23
+Nodes generated: 134136
+Nodes expanded:5833
+Problem solved:  14 8 16 24 12 19 6 4 18 23 3 1 21 20 7 17 10 11 22 15 2 13 5 9 25
+Duration: 0.08745
+Solution: 23
+Nodes generated: 42803
+Nodes expanded:1862
+Problem solved:  13 22 16 7 12 1 5 10 21 18 15 23 3 6 2 20 9 19 4 11 14 8 24 17 25
+Duration: 0.032223
+Solution: 24
+Nodes generated: 15433
+Nodes expanded:672
+Problem solved:  17 16 10 19 13 20 18 8 9 3 22 7 24 11 5 21 15 4 2 12 14 1 6 23 25
+Duration: 0.507178
+Solution: 23
+Nodes generated: 256611
+Nodes expanded:11158
+Problem solved:  24 5 23 16 7 10 19 9 13 21 20 1 18 6 4 14 15 3 8 12 2 22 11 17 25
+Duration: 0.461413
+Solution: 23
+Nodes generated: 234899
+Nodes expanded:10214
+Problem solved:  18 17 6 12 21 16 9 10 3 19 22 7 24 8 23 20 1 15 5 14 11 2 4 13 25
+Duration: 0.084356
+Solution: 23
+Nodes generated: 43079
+Nodes expanded:1874
+Problem solved:  5 3 20 16 19 23 11 13 24 4 18 1 21 8 22 9 15 12 14 17 2 6 10 7 25
+Duration: 0.044431
+Solution: 24
+Nodes generated: 23391
+Nodes expanded:1018
+Problem solved:  6 5 17 22 12 16 14 21 11 4 7 13 1 2 9 3 18 23 10 19 24 8 15 20 25
+Duration: 0.532905
+Solution: 23
+Nodes generated: 273907
+Nodes expanded:11910
+Problem solved:  10 21 15 17 18 6 5 23 24 12 19 11 20 8 22 3 4 1 2 9 7 13 16 14 25
+Duration: 2.12851
+Solution: 21
+Nodes generated: 1072214
+Nodes expanded:46619
+Problem solved:  11 9 15 22 6 1 13 3 8 16 7 18 2 19 12 14 10 21 4 23 24 17 5 20 25
+Duration: 0.027418
+Solution: 23
+Nodes generated: 15134
+Nodes expanded:659
+Problem solved:  10 13 18 1 21 17 22 9 19 14 23 8 4 12 6 5 3 24 7 15 20 16 2 11 25
+Duration: 0.253542
+Solution: 24
+Nodes generated: 130502
+Nodes expanded:5675
+Problem solved:  23 5 12 10 15 24 9 8 18 20 1 19 7 6 11 4 13 22 14 21 3 16 2 17 25
+Duration: 0.327265
+Solution: 23
+Nodes generated: 166520
+Nodes expanded:7241
+Problem solved:  2 6 5 1 15 17 22 4 12 13 16 3 23 9 21 18 11 24 7 19 20 8 14 10 25
+Duration: 0.137432
+Solution: 22
+Nodes generated: 68103
+Nodes expanded:2962
+Problem solved:  5 21 9 23 13 8 18 17 11 22 2 10 14 24 4 1 16 15 3 6 20 19 12 7 25
+Duration: 0.151004
+Solution: 22
+Nodes generated: 76245
+Nodes expanded:3316
+Problem solved:  14 24 3 7 8 4 20 17 12 16 2 5 19 18 10 13 23 6 11 15 22 1 21 9 25
+Duration: 0.185424
+Solution: 23
+Nodes generated: 94530
+Nodes expanded:4111
+Problem solved:  13 18 7 8 6 23 15 3 17 22 9 21 11 24 1 19 10 14 5 16 20 2 4 12 25
+Duration: 0.019221
+Solution: 23
+Nodes generated: 9913
+Nodes expanded:432
+Problem solved:  9 11 24 14 13 21 15 18 17 7 10 5 2 16 4 6 20 12 23 3 22 1 19 8 25
+Duration: 0.408236
+Solution: 23
+Nodes generated: 205252
+Nodes expanded:8925
+Problem solved:  5 22 12 20 11 9 3 7 23 17 16 1 13 19 21 2 4 18 6 14 10 8 24 15 25
+Duration: 0.264801
+Solution: 24
+Nodes generated: 136781
+Nodes expanded:5948
+Problem solved:  8 10 6 13 14 18 3 12 21 5 24 7 22 1 2 4 19 11 9 15 20 23 16 17 25
+Duration: 0.132149
+Solution: 22
+Nodes generated: 68356
+Nodes expanded:2973
+Problem solved:  19 22 5 21 10 2 14 13 15 9 23 18 11 20 16 3 6 8 12 7 4 1 24 17 25
+Duration: 0.804682
+Solution: 24
+Nodes generated: 410504
+Nodes expanded:17849
+Problem solved:  20 23 13 18 22 7 14 12 3 11 15 21 17 8 19 5 4 1 24 6 16 2 10 9 25
+Duration: 0.084639
+Solution: 23
+Nodes generated: 45655
+Nodes expanded:1986
+Problem solved:  12 1 4 2 10 21 24 14 5 18 15 11 17 16 23 22 3 19 7 8 20 6 9 13 25
+Duration: 0.752218
+Solution: 22
+Nodes generated: 387320
+Nodes expanded:16841
+Problem solved:  21 19 4 23 22 8 12 1 9 14 20 10 17 3 13 18 5 16 11 24 2 6 7 15 25
+Duration: 0.00771
+Solution: 22
+Nodes generated: 4278
+Nodes expanded:187
+Problem solved:  2 16 11 1 19 5 6 24 4 10 7 15 3 17 14 22 23 8 18 12 13 21 20 9 25
+Duration: 1.78415
+Solution: 22
+Nodes generated: 869906
+Nodes expanded:37823
+Problem solved:  5 4 21 24 9 11 12 23 3 13 14 6 15 18 17 7 16 2 22 8 20 19 10 1 25
+Duration: 0.001609
+Solution: 19
+Nodes generated: 851
+Nodes expanded:38
+Problem solved:  16 7 19 9 4 5 11 22 20 10 6 12 14 15 2 24 13 8 21 23 18 3 1 17 25
+Duration: 0.25534
+Solution: 23
+Nodes generated: 134136
+Nodes expanded:5833
+Problem solved:  14 8 16 24 12 19 6 4 18 23 3 1 21 20 7 17 10 11 22 15 2 13 5 9 25
+Duration: 0.086117
+Solution: 23
+Nodes generated: 42803
+Nodes expanded:1862
+Problem solved:  13 22 16 7 12 1 5 10 21 18 15 23 3 6 2 20 9 19 4 11 14 8 24 17 25
+Duration: 0.030322
+Solution: 24
+Nodes generated: 15433
+Nodes expanded:672
+Problem solved:  17 16 10 19 13 20 18 8 9 3 22 7 24 11 5 21 15 4 2 12 14 1 6 23 25
+Duration: 0.494475
+Solution: 23
+Nodes generated: 256611
+Nodes expanded:11158
+Problem solved:  24 5 23 16 7 10 19 9 13 21 20 1 18 6 4 14 15 3 8 12 2 22 11 17 25
+Duration: 0.460047
+Solution: 23
+Nodes generated: 234899
+Nodes expanded:10214
+Problem solved:  18 17 6 12 21 16 9 10 3 19 22 7 24 8 23 20 1 15 5 14 11 2 4 13 25
+Duration: 0.084056
+Solution: 23
+Nodes generated: 43079
+Nodes expanded:1874
+Problem solved:  5 3 20 16 19 23 11 13 24 4 18 1 21 8 22 9 15 12 14 17 2 6 10 7 25
+Duration: 0.045713
+Solution: 24
+Nodes generated: 23391
+Nodes expanded:1018
+Problem solved:  6 5 17 22 12 16 14 21 11 4 7 13 1 2 9 3 18 23 10 19 24 8 15 20 25
+Duration: 0.530118
+Solution: 23
+Nodes generated: 273907
+Nodes expanded:11910
+Problem solved:  10 21 15 17 18 6 5 23 24 12 19 11 20 8 22 3 4 1 2 9 7 13 16 14 25
+Duration: 2.12732
+Solution: 21
+Nodes generated: 1072214
+Nodes expanded:46619
+Problem solved:  11 9 15 22 6 1 13 3 8 16 7 18 2 19 12 14 10 21 4 23 24 17 5 20 25
+Duration: 0.029762
+Solution: 23
+Nodes generated: 15134
+Nodes expanded:659
+Problem solved:  10 13 18 1 21 17 22 9 19 14 23 8 4 12 6 5 3 24 7 15 20 16 2 11 25
+Duration: 0.25567
+Solution: 24
+Nodes generated: 130502
+Nodes expanded:5675
+Problem solved:  23 5 12 10 15 24 9 8 18 20 1 19 7 6 11 4 13 22 14 21 3 16 2 17 25
+Duration: 0.317905
+Solution: 23
+Nodes generated: 166520
+Nodes expanded:7241
+Problem solved:  2 6 5 1 15 17 22 4 12 13 16 3 23 9 21 18 11 24 7 19 20 8 14 10 25
+Duration: 0.135878
+Solution: 22
+Nodes generated: 68103
+Nodes expanded:2962
+Problem solved:  5 21 9 23 13 8 18 17 11 22 2 10 14 24 4 1 16 15 3 6 20 19 12 7 25
+Duration: 0.150708
+Solution: 22
+Nodes generated: 76245
+Nodes expanded:3316
+Problem solved:  14 24 3 7 8 4 20 17 12 16 2 5 19 18 10 13 23 6 11 15 22 1 21 9 25
+Duration: 0.184925
+Solution: 23
+Nodes generated: 94530
+Nodes expanded:4111
+Problem solved:  13 18 7 8 6 23 15 3 17 22 9 21 11 24 1 19 10 14 5 16 20 2 4 12 25
+Duration: 0.018749
+Solution: 23
+Nodes generated: 9913
+Nodes expanded:432
+Problem solved:  9 11 24 14 13 21 15 18 17 7 10 5 2 16 4 6 20 12 23 3 22 1 19 8 25
+Duration: 0.408593
+Solution: 23
+Nodes generated: 205252
+Nodes expanded:8925
+Problem solved:  5 22 12 20 11 9 3 7 23 17 16 1 13 19 21 2 4 18 6 14 10 8 24 15 25
+Duration: 0.270996
+Solution: 24
+Nodes generated: 136781
+Nodes expanded:5948
+Problem solved:  8 10 6 13 14 18 3 12 21 5 24 7 22 1 2 4 19 11 9 15 20 23 16 17 25
+Duration: 0.137647
+Solution: 22
+Nodes generated: 68356
+Nodes expanded:2973
+Problem solved:  19 22 5 21 10 2 14 13 15 9 23 18 11 20 16 3 6 8 12 7 4 1 24 17 25
+Duration: 0.813769
+Solution: 24
+Nodes generated: 410504
+Nodes expanded:17849
+Problem solved:  20 23 13 18 22 7 14 12 3 11 15 21 17 8 19 5 4 1 24 6 16 2 10 9 25
+Duration: 0.091742
+Solution: 23
+Nodes generated: 45655
+Nodes expanded:1986
+Problem solved:  12 1 4 2 10 21 24 14 5 18 15 11 17 16 23 22 3 19 7 8 20 6 9 13 25
+Duration: 0.745214
+Solution: 22
+Nodes generated: 387320
+Nodes expanded:16841
+Problem solved:  21 19 4 23 22 8 12 1 9 14 20 10 17 3 13 18 5 16 11 24 2 6 7 15 25
+Duration: 0.007581
+Solution: 22
+Nodes generated: 4278
+Nodes expanded:187
+Problem solved:  2 16 11 1 19 5 6 24 4 10 7 15 3 17 14 22 23 8 18 12 13 21 20 9 25
+Duration: 1.71127
+Solution: 22
+Nodes generated: 869906
+Nodes expanded:37823
+Problem solved:  5 4 21 24 9 11 12 23 3 13 14 6 15 18 17 7 16 2 22 8 20 19 10 1 25
+Duration: 0.001489
+Solution: 19
+Nodes generated: 851
+Nodes expanded:38
+Problem solved:  16 7 19 9 4 5 11 22 20 10 6 12 14 15 2 24 13 8 21 23 18 3 1 17 25
+Duration: 0.255473
+Solution: 23
+Nodes generated: 134136
+Nodes expanded:5833
+Problem solved:  14 8 16 24 12 19 6 4 18 23 3 1 21 20 7 17 10 11 22 15 2 13 5 9 25
+Duration: 0.118392
+Solution: 23
+Nodes generated: 42803
+Nodes expanded:1862
+Problem solved:  13 22 16 7 12 1 5 10 21 18 15 23 3 6 2 20 9 19 4 11 14 8 24 17 25
+Duration: 0.033825
+Solution: 24
+Nodes generated: 15433
+Nodes expanded:672
+Problem solved:  17 16 10 19 13 20 18 8 9 3 22 7 24 11 5 21 15 4 2 12 14 1 6 23 25
+Duration: 0.513114
+Solution: 23
+Nodes generated: 256611
+Nodes expanded:11158
+Problem solved:  24 5 23 16 7 10 19 9 13 21 20 1 18 6 4 14 15 3 8 12 2 22 11 17 25
+Duration: 0.470275
+Solution: 23
+Nodes generated: 234899
+Nodes expanded:10214
+Problem solved:  18 17 6 12 21 16 9 10 3 19 22 7 24 8 23 20 1 15 5 14 11 2 4 13 25
+Duration: 0.090061
+Solution: 23
+Nodes generated: 43079
+Nodes expanded:1874
+Problem solved:  5 3 20 16 19 23 11 13 24 4 18 1 21 8 22 9 15 12 14 17 2 6 10 7 25
+Duration: 0.049106
+Solution: 24
+Nodes generated: 23391
+Nodes expanded:1018
+Problem solved:  6 5 17 22 12 16 14 21 11 4 7 13 1 2 9 3 18 23 10 19 24 8 15 20 25
+Duration: 0.553164
+Solution: 23
+Nodes generated: 273907
+Nodes expanded:11910
+Problem solved:  10 21 15 17 18 6 5 23 24 12 19 11 20 8 22 3 4 1 2 9 7 13 16 14 25
+Duration: 2.20745
+Solution: 21
+Nodes generated: 1072214
+Nodes expanded:46619
+Problem solved:  11 9 15 22 6 1 13 3 8 16 7 18 2 19 12 14 10 21 4 23 24 17 5 20 25
+Duration: 0.02792
+Solution: 23
+Nodes generated: 15134
+Nodes expanded:659
+Problem solved:  10 13 18 1 21 17 22 9 19 14 23 8 4 12 6 5 3 24 7 15 20 16 2 11 25
+Duration: 0.269188
+Solution: 24
+Nodes generated: 130502
+Nodes expanded:5675
+Problem solved:  23 5 12 10 15 24 9 8 18 20 1 19 7 6 11 4 13 22 14 21 3 16 2 17 25
+Duration: 0.34281
+Solution: 23
+Nodes generated: 166520
+Nodes expanded:7241
+Problem solved:  2 6 5 1 15 17 22 4 12 13 16 3 23 9 21 18 11 24 7 19 20 8 14 10 25
+Duration: 0.144238
+Solution: 22
+Nodes generated: 68103
+Nodes expanded:2962
+Problem solved:  5 21 9 23 13 8 18 17 11 22 2 10 14 24 4 1 16 15 3 6 20 19 12 7 25
+Duration: 0.158141
+Solution: 22
+Nodes generated: 76245
+Nodes expanded:3316
+Problem solved:  14 24 3 7 8 4 20 17 12 16 2 5 19 18 10 13 23 6 11 15 22 1 21 9 25
+Duration: 0.197836
+Solution: 23
+Nodes generated: 94530
+Nodes expanded:4111
+Problem solved:  13 18 7 8 6 23 15 3 17 22 9 21 11 24 1 19 10 14 5 16 20 2 4 12 25
+Duration: 0.02005
+Solution: 23
+Nodes generated: 9913
+Nodes expanded:432
+Problem solved:  9 11 24 14 13 21 15 18 17 7 10 5 2 16 4 6 20 12 23 3 22 1 19 8 25
+Duration: 0.436036
+Solution: 23
+Nodes generated: 205252
+Nodes expanded:8925
+Problem solved:  5 22 12 20 11 9 3 7 23 17 16 1 13 19 21 2 4 18 6 14 10 8 24 15 25
+Duration: 0.294211
+Solution: 24
+Nodes generated: 136781
+Nodes expanded:5948
+Problem solved:  8 10 6 13 14 18 3 12 21 5 24 7 22 1 2 4 19 11 9 15 20 23 16 17 25
+Duration: 0.135001
+Solution: 22
+Nodes generated: 68356
+Nodes expanded:2973
+Problem solved:  19 22 5 21 10 2 14 13 15 9 23 18 11 20 16 3 6 8 12 7 4 1 24 17 25
+Duration: 0.809885
+Solution: 24
+Nodes generated: 410504
+Nodes expanded:17849
+Problem solved:  20 23 13 18 22 7 14 12 3 11 15 21 17 8 19 5 4 1 24 6 16 2 10 9 25
+Duration: 0.086283
+Solution: 23
+Nodes generated: 45655
+Nodes expanded:1986
+Problem solved:  12 1 4 2 10 21 24 14 5 18 15 11 17 16 23 22 3 19 7 8 20 6 9 13 25
+Duration: 0.754288
+Solution: 22
+Nodes generated: 387320
+Nodes expanded:16841
+Problem solved:  21 19 4 23 22 8 12 1 9 14 20 10 17 3 13 18 5 16 11 24 2 6 7 15 25
+Duration: 0.007944
+Solution: 22
+Nodes generated: 4278
+Nodes expanded:187
+Problem solved:  2 16 11 1 19 5 6 24 4 10 7 15 3 17 14 22 23 8 18 12 13 21 20 9 25
+Duration: 1.7194
+Solution: 22
+Nodes generated: 869906
+Nodes expanded:37823
+Problem solved:  5 4 21 24 9 11 12 23 3 13 14 6 15 18 17 7 16 2 22 8 20 19 10 1 25
+Duration: 0.0015
+Solution: 19
+Nodes generated: 851
+Nodes expanded:38
+Problem solved:  16 7 19 9 4 5 11 22 20 10 6 12 14 15 2 24 13 8 21 23 18 3 1 17 25
+Duration: 0.26247
+Solution: 23
+Nodes generated: 134136
+Nodes expanded:5833
+Problem solved:  14 8 16 24 12 19 6 4 18 23 3 1 21 20 7 17 10 11 22 15 2 13 5 9 25
+Duration: 0.08967
+Solution: 23
+Nodes generated: 42803
+Nodes expanded:1862
+Problem solved:  13 22 16 7 12 1 5 10 21 18 15 23 3 6 2 20 9 19 4 11 14 8 24 17 25
+Duration: 0.030708
+Solution: 24
+Nodes generated: 15433
+Nodes expanded:672
+Average Time: 0.385962
+Average Solution: 22
+Average Expanded Nodes: 8325
+Average Generated Nodes: 191452
