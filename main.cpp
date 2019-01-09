@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cstdint> //or <stdint.h>
 #include <limits>
-#include <limits.h>
 #include <fstream>
 #include <stdlib.h>
 #include <math.h>
@@ -14,7 +13,6 @@
 #include <boost/heap/fibonacci_heap.hpp>
 #include <boost/any.hpp>
 #include <random> 
-
 #include <boost/container/vector.hpp>
 #include <boost/container/stable_vector.hpp>
 #include <boost/container/static_vector.hpp>
@@ -23,10 +21,11 @@
 #include <stdexcept>
 #include <chrono>
 
+
 using namespace std;
 using namespace boost::heap;
 
-struct state{
+struct State{
 	int id;
 	vector<int> list;
 	float g;
@@ -34,22 +33,50 @@ struct state{
     float f;
     boost::any handler_open;
 	int n = list.size();
-	state(int _id, vector<int> _list, double j, double h_, double k) : id(_id) ,list(_list),g(j),h(h_),f(k) {}
-	~state(){}
+	State(int _id, vector<int> _list, double j, double h_, double k) : id(_id) ,list(_list),g(j),h(h_),f(k) {}
+	~State(){}
+
+	State & operator=(const State & _state){
+		if(this == &_state) return *this;
+		this->id = _state.id;
+		this->list = _state.list;
+		this->g = _state.g;
+		this->h = _state.h;
+		this->f = _state.f;
+	};
+
+	bool operator==(const State & _state) const{
+		return (this==&_state);
+	};
+
 };
+
 struct compare_states {
-    bool operator()(const state* s1, const state* s2) const {
+    bool operator()(const State* s1, const State* s2) const {
         //return n1.id > n2.id;
         return s1->f > s2->f ;
     }
 };
 
-int node_id=0;
-typedef fibonacci_heap<state*,compare<compare_states> >::handle_type open_handle;
+
+struct hash_states<State>
+{
+    std::size_t operator()(const State& c) const
+    {
+        std::size_t result = c.list.size();
+        for(unsigned i = 0; i < c.list.size(); ++i) {
+        	boost::hash_combine(result, c.list[i]+i);
+        }
+        return result;
+    }
+};
+
+
+typedef fibonacci_heap<State*,compare<compare_states> >::handle_type open_handle;
 boost::unordered_map<int, open_handle> node_map;
 
-fibonacci_heap<state*, boost::heap::compare<compare_states> > open_list;
-boost::container::vector<state> close_list;
+fibonacci_heap<State*, boost::heap::compare<compare_states> > open;
+boost::container::vector<State*> closed;
 
 set<vector<int>> goal_set;
 
@@ -58,7 +85,7 @@ int expanded_nodes;
 vector<int> goal_list;
 state *solution;
 
-void printList(state* currentState ){
+void printList(State* currentState ){
 	for (int& x: currentState->list) cout << ' ' << x;
     std::cout << '\n';
 }
@@ -119,7 +146,7 @@ vector<int> flip(vector<int> s1, int i) {
 	return previous;
 }
 
-void getSuccessors(state* _current, double w){
+void getSuccessors(State* _current, double w){
 	
 	for(size_t i = 2; i < _current->list.size(); ++i) {
 		node_id++;
@@ -127,15 +154,24 @@ void getSuccessors(state* _current, double w){
 		state* succ = new state(node_id,flip(_current->list,i),0,0,0);
 		succ->g = _current->g +1;              
 		succ->h = hgap(succ->list)*w;
-		succ->f = succ->h+succ->g; 
+		succ->f = succ->h+1;//+succ->g; 
+
 		//check if is open 
 		
 		auto node_find = node_map.find(node_id);
+		auto state_f = find(closed.begin(),closed.end(),succ);
 		if(node_find != node_map.end()){ //if in the open list
-			open_list.update(node_find->second,succ);
+			open.update(node_find->second,succ);
+		}
+
+		else if(state_f != closed.end()){ //in closed?
+			closed.erase(state_f);
+			open.push(succ);
 		}
 		else {
-			open_list.push(succ);
+			auto prt_open = open.push(succ);
+			node_map.emplace(node_id,prt_open);
+
 		}
 	}
 
@@ -147,7 +183,7 @@ vector<int> createProblem (int n, int seed){
 
     default_random_engine e(seed);
    	//populate goal and create vector
-	for(unsigned i = 1; i < n+1; ++i) {
+	for(int i = 1; i < n+1; ++i) {
 		goal_list.push_back(i);
 		v0.push_back(i);
 	}
@@ -166,21 +202,22 @@ vector<int> createProblem (int n, int seed){
 
 
 
-
-
 int aStar(vector<int> s0, double w) {
 
-	state *initial_state = new state(node_id,s0,0,0,0);
+	State *initial_state = new state(node_id,s0,0,hgap(s0),0);
 
-	auto prt_open = open_list.push(initial_state);
+	auto prt_open = open.push(initial_state);
 	node_map.emplace(node_id,prt_open);
 	
 	
-	while(!open_list.empty()){
+	while(!open.empty()){
 		
 		//count_close_states++;
-		state* current = open_list.top();
-		open_list.pop();
+		State* current = open.top();
+
+		closed.push_back(current);
+
+		open.pop();
 		expanded_nodes++;  
 		//cout<<"Current state:"<<endl;
 		//printList(current);
@@ -190,13 +227,36 @@ int aStar(vector<int> s0, double w) {
 			return 1;
 		}
 		getSuccessors(current,w);
-		
+
 	}
 	return -1;
 
 }
 
-update_h 
+void update_h (){
+	for(unsigned i = 0; i <closed.size() ; ++i) {
+		closed[i]->h = numeric_limits<unsigned short int>::max();
+		
+	}
+	
+	while(!open.empty()) {
+		State* open_b = open.top();
+
+		for(size_t i = 2; i < open_b->n; ++i) {   
+			cout<<"PCHDISHFCSDIJFCISD"<<endl;    
+			State* succ = new state(node_id,flip(open_b->list,i),open_b->g +1,hgap(succ->list),0);
+			succ->f = succ->h;
+			auto succ_f = find(closed.begin(),closed.end(),succ); 
+			if(succ_f != closed.end()){
+				if((*succ_f)->h > open_b->h +succ->g /*Es el g? */ ){
+					(*succ_f)->h = open_b->h + succ->g;
+					open.push(succ);
+				} 
+			}		
+
+		}
+	}
+}
 
 //TODO:
 //revisar si la heuristica convergio
@@ -221,7 +281,8 @@ int main(int argc, char const *argv[])
 		chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::now();
 
 		int resp = aStar(myvector,1.0);
-
+		//update_h();
+		//resp = aStar(myvector,1.0);
 		chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::now();
 		if (resp != -1){
 
@@ -243,13 +304,13 @@ int main(int argc, char const *argv[])
 		}
 
 		goal_set.clear();
-		open_list.clear();
-		close_list.clear();
+		open.clear();
+		closed.clear();
 		goal_list.clear();
 		node_map.clear();
 		expanded_nodes = 0;
 		generated_nodes = 0;
-		node_id=0;
+
 		j++;
 	}
 	double avg_t;
