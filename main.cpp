@@ -88,7 +88,7 @@ struct equal_states {
 typedef fibonacci_heap<State*,compare<compare_states> >::handle_type open_handle;
 boost::unordered_map<State*, open_handle> open_map;
 boost::unordered_map<size_t, State*> node_map; //change to hash,int
-
+boost::unordered_map<size_t, vector <State*>> child_map;
 //boost::unordered_set<State*,hash_states> state_set;
 
 fibonacci_heap<State*, boost::heap::compare<compare_states> > open;
@@ -186,6 +186,8 @@ vector<int> flip(vector<int> s1, int i) {
 }
 
 void getSuccessors(State* _current, double w){
+
+	vector <State*> childrens;
 	
 	for(size_t i = 2; i < _current->list.size(); ++i) {
 
@@ -235,7 +237,12 @@ void getSuccessors(State* _current, double w){
 			
 
 		}
+
+		childrens.push_back(succ);
 	}
+
+	child_map.emplace(_current->id,childrens);
+
 
 } 
 vector<int> createProblem (int n, int seed){
@@ -268,12 +275,17 @@ State* aStar(vector<int> s0, double w, int lookahead) {
 	State *initial_state = new State(0,s0,0,hgap(s0),0,NULL);
 	initial_state->id = gen_id(initial_state);
 	//check if is in the transposition map
+	
 	auto it_node = node_map.find(initial_state->id);
 	if ( it_node != node_map.end() ){
 		initial_state->h = it_node->second->h;
 	} else {
 		node_map.emplace(initial_state->id,initial_state);
+		//(si la tabla nueva no esta vacia)
+		//	agrego a la tabla nueva
+		//si no, agrego a la antigua
 	}
+
 
 	auto prt_open = open.push(initial_state);
 	open_map.emplace(initial_state,prt_open);
@@ -330,7 +342,8 @@ int update_h(State* s){
 	
 
 	//actualizar mapa, no las estructuras
-	boost::container::vector<State*> childrens = children(s);
+	//boost::container::vector<State*> childrens = children(s);
+	boost::container::vector<State*> childrens = child_map[s->id];
 	auto node_find = open_map.find(s);
 	if( node_find != open_map.end() ) {
 
@@ -487,7 +500,7 @@ int main(int argc, char const *argv[])
 		if (resp != -1){
 
 			chrono::duration<double> time_span = chrono::duration_cast<chrono::duration<double>>(end-start);
-			cout<< "Problem solved: ";
+			cout<< "Problem to solved: ";
 			for (int& x: myvector) cout << ' ' << x;
     		cout << '\n';
 			cout<<"Duration: "<<time_span.count()<<endl;
