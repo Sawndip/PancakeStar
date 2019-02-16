@@ -87,7 +87,8 @@ struct equal_states {
 
 typedef fibonacci_heap<State*,compare<compare_states> >::handle_type open_handle;
 boost::unordered_map<State*, open_handle> open_map;
-boost::unordered_map<size_t, State*> node_map; //change to hash,int
+boost::unordered_map<size_t, State*> node_map; 
+boost::unordered_map<size_t, State*> new_node_map; 
 boost::unordered_map<size_t, vector <State*>> child_map;
 //boost::unordered_set<State*,hash_states> state_set;
 
@@ -188,6 +189,7 @@ vector<int> flip(vector<int> s1, int i) {
 void getSuccessors(State* _current, double w){
 
 	vector <State*> childrens;
+	vector <State*> empty;
 	
 	for(size_t i = 2; i < _current->list.size(); ++i) {
 
@@ -201,13 +203,16 @@ void getSuccessors(State* _current, double w){
 		//check if already is generated
 		auto in_map = node_map.find(succ->id);
 		if(in_map != node_map.end()){
-			//in_map->second = succ;
-			succ->h = in_map->second->h;		
+			
+			//succ->h = in_map->second->h;
+			succ->h = ((_current->h-1)>in_map->second->h) ? (_current->h-1) : in_map->second->h;
+			new_node_map.emplace(succ->id,succ);		
 			
 		} else{		
-			succ->h = hgap(succ->list)*w;
+			succ->h = (hgap(succ->list)*w > (_current->h-1)) ? hgap(succ->list)*w : (_current->h-1);
 			
 			node_map.emplace(succ->id,succ);
+			new_node_map.emplace(succ->id,succ);
 
 		}
 		succ->f = (succ->h+ succ->g)*100000 - succ->g; 
@@ -222,7 +227,7 @@ void getSuccessors(State* _current, double w){
 			open.update(node_find->second);
 			
 		}
-
+		//eliminar esto de la open. 
 		else if(state_f != closed.end()){ //in closed?
 
 			closed.erase(state_f);
@@ -237,6 +242,11 @@ void getSuccessors(State* _current, double w){
 			
 
 		}
+		
+		if( child_map.find(succ->id) == child_map.end()){
+			child_map[succ->id] = empty;
+		} 
+		
 
 		childrens.push_back(succ);
 	}
@@ -279,18 +289,18 @@ State* aStar(vector<int> s0, double w, int lookahead) {
 	auto it_node = node_map.find(initial_state->id);
 	if ( it_node != node_map.end() ){
 		initial_state->h = it_node->second->h;
+		new_node_map.emplace(initial_state->id,initial_state);
 	} else {
 		node_map.emplace(initial_state->id,initial_state);
+		new_node_map.emplace(initial_state->id,initial_state);
+		
 		//(si la tabla nueva no esta vacia)
 		//	agrego a la tabla nueva
 		//si no, agrego a la antigua
 	}
 
-
 	auto prt_open = open.push(initial_state);
 	open_map.emplace(initial_state,prt_open);
-	
-	
 	
 	while(!open.empty()  && iter < lookahead ){
 		
@@ -316,6 +326,7 @@ State* aStar(vector<int> s0, double w, int lookahead) {
 	return current;
 
 }
+
 boost::container::vector<State*>  children(State* s) {
 	boost::container::vector<State*> childrens;
 
@@ -340,40 +351,53 @@ boost::container::vector<State*>  children(State* s) {
 
 int update_h(State* s){
 	
-
+	vector<State*> childrens;
 	//actualizar mapa, no las estructuras
 	//boost::container::vector<State*> childrens = children(s);
-	boost::container::vector<State*> childrens = child_map[s->id];
+
+	//boost::container::vector<State*> childrens = child_map.at(s->id);
+	cout<<"tulita"<<endl;
+
+	auto child_find = child_map.find(s->id);
+	if (child_find != child_map.end()){
+			cout<<"tulita4"<<endl;
+			childrens = child_find->second;
+			cout<<"tulita2"<<endl;
+	}
+	cout<<"tulita3"<<endl;
 	auto node_find = open_map.find(s);
 	if( node_find != open_map.end() ) {
 
 		return s->h;
 	}
 	int min = numeric_limits<unsigned short int>::max();
-	
+	cout<<"min 1:"<<min<<endl;
 	if ( childrens.empty() ){ 
-		//cout<<"1"<<endl;
+		cout<<"1"<<endl;
 		return min;
 	} else {
-		//cout<<"2"<<endl;
+		cout<<"2"<<endl;
 		for (auto &state : childrens ){
+
 			int h = update_h(state);
-			//cout<<"4"<<endl;
+			cout<<"4"<<endl;
 
 			if(min > 1+h){
+				cout<<"tuma"<<endl;
 				min = 1+h;
 			}
 		}
+		cout<<"sere yo señor"<<endl;
 		auto it_node = node_map.find(s->id);
 		if ( it_node != node_map.end() ){
-			//cout<<"3"<<endl;
+			cout<<"min 2:"<<min<<endl;
 			it_node->second->h = min;
 		} else {
 			cout<<"State not found"<<endl;
 		}
 
 	}
-
+	//delete childrens;
 	return min;
 
 }
@@ -424,14 +448,14 @@ void update_h (){
 */
 
 
-int driver(vector<int> myvector, int lookahead) {
+int driver(vector<int> myvector, int lookahead, double w) {
 	
 	int iter = 0;
 
-	//verificar si llego al objetivo
+	//verificar si llego al objetivos
 	
 	while(1) {
-		State *prop_sol = aStar(myvector,1.5,lookahead);//numero + grande que el numero de operaciones optimas
+		State *prop_sol = aStar(myvector,w,lookahead);//numero + grande que el numero de operaciones optimas
 		cout<<"nodos expandidos dsps astar: "<<expanded_nodes<<endl;
 		//get start node
 		
@@ -445,10 +469,13 @@ int driver(vector<int> myvector, int lookahead) {
 		if(iter > 100000) {
 			return -1;	
 		}
-
+		//swap tables
+		node_map = new_node_map;
+		new_node_map.clear();
 
 		State* first = closed[0];
 		cout<<"h antes update: "<<first->h<<endl;
+		//esto 
 		auto it_node= node_map.find(first->id);
 		if ( it_node != node_map.end() ){
 			cout<<"Doing update_heuristic"<<endl;
@@ -457,6 +484,7 @@ int driver(vector<int> myvector, int lookahead) {
 			cout<<"State not found"<<endl;
 			return -1;
 		}
+
 		cout<<"First h: "<<it_node->second->h<<endl;
 		cin.get();
 		printMap();
@@ -485,14 +513,14 @@ int main(int argc, char const *argv[])
 	int n_cases = atoi(argv[1]);
 	int j =0 ;
 
-	double w = 1;
+	double w = atoi(argv[4]);
 	while(j < n_cases){
 		srand (4*(j+1));
 		vector<int> myvector = createProblem(atoi(argv[2]),rand()%100);
 		goal_set.insert(goal_list);
 		chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::now();
 
-		int resp = driver(myvector,atoi(argv[3]));
+		int resp = driver(myvector,atoi(argv[3]),w);
 		node_map.clear();
 		//update_h();
 		//resp = aStar(myvector,1.0);
