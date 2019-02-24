@@ -88,7 +88,7 @@ struct equal_states {
 typedef fibonacci_heap<State*,compare<compare_states> >::handle_type open_handle;
 boost::unordered_map<State*, open_handle> open_map;
 boost::unordered_map<size_t, State*> node_map; //change to hash,int
-
+boost::unordered_map<size_t, vector <State*>> child_map;
 //boost::unordered_set<State*,hash_states> state_set;
 
 fibonacci_heap<State*, boost::heap::compare<compare_states> > open;
@@ -186,6 +186,9 @@ vector<int> flip(vector<int> s1, int i) {
 }
 
 void getSuccessors(State* _current, double w){
+
+	vector <State*> childrens;
+	vector <State*> empty;
 	
 	for(size_t i = 2; i < _current->list.size(); ++i) {
 
@@ -220,22 +223,31 @@ void getSuccessors(State* _current, double w){
 			open.update(node_find->second);
 			
 		}
-
+		/*
 		else if(state_f != closed.end()){ //in closed?
 
 			closed.erase(state_f);
 			auto prt_open = open.push(succ);
 			open_map.emplace(succ,prt_open);
 			
-		}
+		}*/
 		else {
 
 			auto prt_open = open.push(succ);
-			open_map.emplace(succ,prt_open);
-			
+			open_map.emplace(succ,prt_open);			
 
 		}
+		if( child_map.find(succ->id) == child_map.end()){
+			child_map[succ->id] = empty;
+			//estoy agregando altiro el empty al succ. wwewe
+		} 
+
+		childrens.push_back(succ);
+
 	}
+	child_map[_current->id] = childrens;
+	//child_map.emplace(_current->id,childrens);
+	//delete childrens;
 
 } 
 vector<int> createProblem (int n, int seed){
@@ -330,7 +342,14 @@ int update_h(State* s){
 	
 
 	//actualizar mapa, no las estructuras
-	boost::container::vector<State*> childrens = children(s);
+	//boost::container::vector<State*> childrens = children(s);
+	
+	vector<State*> childrens;
+	auto child_find = child_map.find(s->id);
+	if (child_find != child_map.end()){	
+			childrens = child_find->second;
+	}
+
 	auto node_find = open_map.find(s);
 	if( node_find != open_map.end() ) {
 
