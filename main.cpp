@@ -251,8 +251,8 @@ void getSuccessors(State* _current, double w){
 		childrens.push_back(succ);
 	}
 
-	child_map.emplace(_current->id,childrens);
-
+	//child_map.emplace(_current->id,childrens);
+	child_map[_current->id] = childrens;
 
 } 
 vector<int> createProblem (int n, int seed){
@@ -356,41 +356,41 @@ int update_h(State* s){
 	//boost::container::vector<State*> childrens = children(s);
 
 	//boost::container::vector<State*> childrens = child_map.at(s->id);
-	cout<<"tulita"<<endl;
+	
 
 	auto child_find = child_map.find(s->id);
 	if (child_find != child_map.end()){
-			cout<<"tulita4"<<endl;
+			
 			childrens = child_find->second;
-			cout<<"tulita2"<<endl;
+		
 	}
-	cout<<"tulita3"<<endl;
+	
 	auto node_find = open_map.find(s);
 	if( node_find != open_map.end() ) {
 
 		return s->h;
 	}
 	int min = numeric_limits<unsigned short int>::max();
-	cout<<"min 1:"<<min<<endl;
+	//cout<<"min 1:"<<min<<endl;
 	if ( childrens.empty() ){ 
-		cout<<"1"<<endl;
+
 		return min;
 	} else {
-		cout<<"2"<<endl;
+
 		for (auto &state : childrens ){
 
 			int h = update_h(state);
-			cout<<"4"<<endl;
+
 
 			if(min > 1+h){
-				cout<<"tuma"<<endl;
+
 				min = 1+h;
 			}
 		}
-		cout<<"sere yo señor"<<endl;
+		
 		auto it_node = node_map.find(s->id);
 		if ( it_node != node_map.end() ){
-			cout<<"min 2:"<<min<<endl;
+			//cout<<"min 2:"<<min<<endl;
 			it_node->second->h = min;
 		} else {
 			cout<<"State not found"<<endl;
