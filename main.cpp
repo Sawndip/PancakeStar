@@ -209,6 +209,8 @@ void getSuccessors(State* _current, double w){
 			new_node_map.emplace(succ->id,succ);		
 			
 		} else{		
+			//agregar otra expansion par obtener el h
+			//obtener los succ y ver los que estan en la tabla y darle el mayor - el costo
 			succ->h = (hgap(succ->list)*w > (_current->h-1)) ? hgap(succ->list)*w : (_current->h-1);
 			
 			node_map.emplace(succ->id,succ);
@@ -486,7 +488,7 @@ int driver(vector<int> myvector, int lookahead, double w) {
 		}
 
 		cout<<"First h: "<<it_node->second->h<<endl;
-		cin.get();
+		//cin.get();
 		printMap();
 
 		iter++;
